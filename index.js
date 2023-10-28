@@ -46,6 +46,15 @@ app.put("/api/genres/:id", (req, res) => {
   result.slug = req.body.slug;
   res.send(result);
 });
+
+app.delete("/api/genres/:id", (req, res) => {
+  const result = genres.find((c) => c.id === parseInt(req.params.id));
+  if (!result) return res.status(404).send("resource not found");
+  const index = genres.indexOf(result);
+  const genre = genres.splice(index, 1);
+  res.send(genres);
+});
+
 app.listen(port, () => {
   console.log(`server listening on http://localhost:${port}`);
 });
