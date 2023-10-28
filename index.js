@@ -1,6 +1,9 @@
 const express = require("express");
+const validate = require("./utils/validate");
 
 const app = express();
+
+app.use(express.json());
 
 const port = 3000;
 const genres = [
@@ -15,6 +18,7 @@ const genres = [
 app.get("/api/genres", (req, res) => {
   res.send(genres);
 });
+
 app.get("/api/genres/:id", (req, res) => {
   const course = genres.find((g) => g.id === parseInt(req.params.id));
   if (!course) return res.status(404).send("course not found");
@@ -22,7 +26,17 @@ app.get("/api/genres/:id", (req, res) => {
 });
 
 //post requests
-app.post("/api/genres");
+app.post("/api/genres", (req, res) => {
+  const genre = {
+    id: genres.length + 1,
+    name: req.body.name,
+    slug: req.body.slug,
+  };
+  const err = validate(genre);
+  if (err) return res.status(400).send(err);
+  genres.push(genre);
+  res.send(genre);
+});
 
 app.listen(port, () => {
   console.log(`server listening on http://localhost:${port}`);

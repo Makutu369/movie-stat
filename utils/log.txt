@@ -1,0 +1,24 @@
+ZodError: [
+  {
+    "code": "custom",
+    "message": "Invalid input",
+    "path": [
+      "slug"
+    ]
+  }
+]
+    at get error [as error] (/home/makutu/express/vidly/node_modules/zod/lib/types.js:43:31)
+    at ZodObject.parse (/home/makutu/express/vidly/node_modules/zod/lib/types.js:143:22)
+    at validate (/home/makutu/express/vidly/utils/validate.js:10:12)
+    at Object.<anonymous> (/home/makutu/express/vidly/utils/validate.js:17:14)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)
+    at node:internal/main/run_main_module:23:47 {
+  issues: [ { code: 'custom', message: 'Invalid input', path: [Array] } ],
+  addIssue: [Function (anonymous)],
+  addIssues: [Function (anonymous)],
+  errors: [ { code: 'custom', message: 'Invalid input', path: [Array] } ]
+}
