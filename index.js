@@ -15,6 +15,7 @@ const genres = [
   { id: 6, name: "Fantasy", slug: "fantasy" }, // Changed id to 6
   { id: 7, name: "Horror", slug: "horror" }, // Changed id to 7
 ];
+
 app.get("/api/genres", (req, res) => {
   res.send(genres);
 });
@@ -38,6 +39,13 @@ app.post("/api/genres", (req, res) => {
   res.send(genre);
 });
 
+app.put("/api/genres/:id", (req, res) => {
+  const result = genres.find((g) => g.id === parseInt(req.params.id));
+  if (!result) return res.status(400).send("badrequest");
+  result.name = req.body.name;
+  result.slug = req.body.slug;
+  res.send(result);
+});
 app.listen(port, () => {
   console.log(`server listening on http://localhost:${port}`);
 });
