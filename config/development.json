@@ -1,0 +1,7 @@
+{"name": "development-server",
+    "port": "8000",
+    "mail": {
+        "host": "@gmail.com",
+        "name": "makutu369"
+    }
+}
