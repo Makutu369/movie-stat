@@ -1,10 +1,11 @@
 const express = require("express");
 const validate = require("./utils/validate");
-const logger = require("./middlewares/logger");
-
+const config = require("config");
 const app = express();
 app.use(express.json());
+const port = 3000;
 
+console.log("node running on::",config.get("name"));
 const genres = [
   { id: 1, name: "Action", slug: "action" },
   { id: 2, name: "Adventure", slug: "adventure" }, // Changed id to 2
