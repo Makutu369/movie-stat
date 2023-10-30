@@ -1,10 +1,11 @@
 const express = require("express");
+const morgan = require("morgan");
 const validate = require("./utils/validate");
+const logger = require("./middlewares/logger");
 
 const app = express();
-
 app.use(express.json());
-
+app.use(morgan("tiny")); //using morgan for logging
 const port = 3000;
 const genres = [
   { id: 1, name: "Action", slug: "action" },
